@@ -25,13 +25,11 @@ def getuser(id: int):
 def createuser(user: User, token: str = Depends(auth_token)):
     authorized = VerifyToken(token.credentials).verify()
     if authorized.get("status")=="error":
-         raise HTTPException(status_code=400, detail="Not authorized")
-    try:
-        doc = collection.find_one({"id": user.id})
-        if doc:
-            return {"status": 400, "data": "User ID already exists"}
-    except:
-        pass
+        raise HTTPException(status_code=400, detail="Not authorized")
+    
+    doc = collection.find_one({"id": user.id})
+    if doc:
+        return {"status": 400, "data": "User ID already exists"}
     _id = collection.insert_one(dict(user))
     user = users_serializer(collection.find({"_id": _id.inserted_id}))
     return {"status": "Ok","data": user}

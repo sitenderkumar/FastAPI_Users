@@ -7,7 +7,7 @@ Uvicorn : Web Server compoment used in the program
 MongoDB : Used in the programto store the value of users
 Okta Autho0: Authentication method/servie used in the program
 =============Steps followed in the program=====
-Following are the steps that has been followed, for a visual representationn of the flow/design, please refer architecture_design file
+Following are the steps that has been followed, for a visual representationn of the flow/design, please refer "desgin" and "workflow"  file
 Install Python 3.6 or higher
 Install Uvicorn
 Install MongoDB on local system
